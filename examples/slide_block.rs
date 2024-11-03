@@ -5,7 +5,7 @@ use ratatui::{
 
 fn main() {
     let mut terminal = ratatui::init();
-    terminal.clear().unwrap();
+    // terminal.clear().unwrap();
     terminal
         .draw(|frame| {
             let block = Block::new()
