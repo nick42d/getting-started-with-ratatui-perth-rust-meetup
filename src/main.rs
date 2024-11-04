@@ -1,6 +1,6 @@
 use ratatui::{
     crossterm::event,
-    widgets::{Block, Borders},
+    widgets::{Block, Borders}
 };
 
 fn main() {
@@ -10,7 +10,10 @@ fn main() {
         .draw(|frame| {
             let block = Block::new()
                 .borders(Borders::ALL)
-                .title_top("Getting Started With Ratatui");
+                .title_top(
+                    "Getting Started With
+    Ratatui"
+                );
             frame.render_widget(block, frame.area());
         })
         .unwrap();
