@@ -4,7 +4,6 @@ use ratatui::{
 };
 use std::time::Duration;
 
-#[allow(unreachable_code)]
 fn main() {
     let mut terminal = ratatui::init();
     let mut counter = 0;

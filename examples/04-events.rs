@@ -3,8 +3,7 @@ use ratatui::{
         self,
         event::{Event, KeyCode, KeyEvent}
     },
-    layout::{Constraint, Layout},
-    style::{Color, Style, Stylize},
+    style::{Color, Style},
     widgets::Paragraph
 };
 

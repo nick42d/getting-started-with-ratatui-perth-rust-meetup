@@ -1,30 +1,26 @@
 use ratatui::{
     crossterm::{self, event::*},
     layout::{Constraint, Layout},
-    style::{Color, Style, Stylize},
-    widgets::{ListState, Paragraph}
+    style::Stylize,
+    widgets::{List, Paragraph}
 };
 
 #[allow(unreachable_code, clippy::single_match)]
 fn main() {
     let mut terminal = ratatui::init();
-    let mut state = ListState::default();
-    state.select(Some(0));
-    while state.selected().is_some_and(|s| s < 10) {
+    let mut counter = 0;
+    while counter <= 10 {
         let list =
             ["ratatui", "hello", "ratatouille", "world"];
-        let title = ratatui::widgets::List::new(
+        let title = List::new(
             list.iter()
-                .cycle()
-                .take(20)
                 .filter(|s| !s.contains("rat"))
                 .map(|s| s.to_uppercase())
         )
-        .highlight_symbol(">>")
         .white()
         .on_red();
         let body = Paragraph::new(format!(
-            "Iteration x, press (+) to increase"
+            "Iteration {counter}, press (+) to increase"
         ))
         .red()
         .on_white();
@@ -35,9 +31,7 @@ fn main() {
                     Constraint::Percentage(75)
                 ])
                 .split(f.area());
-                f.render_stateful_widget(
-                    title, layout[0], &mut state
-                );
+                f.render_widget(title, layout[0]);
                 f.render_widget(body, layout[1]);
             })
             .unwrap();
@@ -45,7 +39,7 @@ fn main() {
             crossterm::event::Event::Key(KeyEvent {
                 code: KeyCode::Char('+'),
                 ..
-            }) => state.select_next(),
+            }) => counter += 1,
             _ => ()
         }
     }
