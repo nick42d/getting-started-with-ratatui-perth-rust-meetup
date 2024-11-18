@@ -10,7 +10,7 @@ fn main() {
     let mut terminal = ratatui::init();
     let mut state = ListState::default();
     let mut counter = 0;
-    while counter <= 10 {
+    while counter <= 15 {
         state.select(Some(counter));
         let list =
             ["ratatui", "hello", "ratatouille", "world"];
