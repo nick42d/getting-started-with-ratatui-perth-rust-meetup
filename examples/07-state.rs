@@ -9,8 +9,9 @@ use ratatui::{
 fn main() {
     let mut terminal = ratatui::init();
     let mut state = ListState::default();
-    state.select(Some(0));
-    while state.selected().is_some_and(|s| s < 10) {
+    let mut counter = 0;
+    while counter <= 10 {
+        state.select(Some(counter));
         let list =
             ["ratatui", "hello", "ratatouille", "world"];
         let title = ratatui::widgets::List::new(
@@ -43,7 +44,7 @@ fn main() {
             crossterm::event::Event::Key(KeyEvent {
                 code: KeyCode::Char('+'),
                 ..
-            }) => state.select_next(),
+            }) => counter += 1,
             _ => ()
         }
     }
