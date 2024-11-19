@@ -45,6 +45,10 @@ fn main() {
                 code: KeyCode::Char('+'),
                 ..
             }) => counter += 1,
+            crossterm::event::Event::Key(KeyEvent {
+                code: KeyCode::Char('-'),
+                ..
+            }) => counter -= 1,
             _ => ()
         }
     }
